@@ -18,6 +18,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import themeReducer from "./reducers/themeSlice";
 import userReducer from "./reducers/user/userSlice";
 import wishListReducer from "./reducers/wishListSlice";
+import { productCategoryApi } from "./reducers/product/productCatFetchAPI";
 
 const persistConfig = {
   key: "root",
@@ -39,13 +40,15 @@ export const store = configureStore({
   reducer: {
     persist: persistedReducer,
     [productApi.reducerPath]: productApi.reducer,
+    [productCategoryApi.reducerPath]: productCategoryApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(productApi.middleware),
+    }).concat(productApi.middleware)
+      .concat(productCategoryApi.middleware),
 });
 
 // Setup persistor

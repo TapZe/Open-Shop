@@ -7,6 +7,6 @@ export type product = {
   image: string;
 }
 
-export type allProductsResponse = {
-    products: product[];
-}
+export type allProductsResponse = product[];
+
+export type categoryResponse = string[];
