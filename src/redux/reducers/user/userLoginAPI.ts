@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { LoginCredentials, LoginResponse } from "../../../types";
+import { LoginCredentials, LoginResponse } from "../../../types/types";
 import { saveCurrentToken } from "./userSlice";
 import { BASE_URI, LOGIN_QUERY } from "../../../constants/apiBaseURI";
 

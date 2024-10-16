@@ -3,7 +3,7 @@ import {
   RemoveWishListPayload,
   WishListPayload,
   WishListState,
-} from "../../types";
+} from "../../types/types";
 
 const initialState: WishListState = {
   wishList: [],

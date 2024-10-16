@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ThemeState } from "../../types";
+import { ThemeState } from "../../types/types";
 
 const initialState: ThemeState = {
   isDark: true,

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserJwtPayload, UserState } from "../../../types";
+import { UserJwtPayload, UserState } from "../../../types/types";
 import { jwtDecode } from "jwt-decode";
 
 const initialState: UserState = {
