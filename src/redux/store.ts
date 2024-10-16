@@ -9,9 +9,10 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import { combineReducers } from "redux";
+import { productApi } from "./reducers/product/productFetchAPI";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 // Import reducer here
 import themeReducer from "./reducers/themeSlice";
@@ -37,13 +38,14 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
   reducer: {
     persist: persistedReducer,
+    [productApi.reducerPath]: productApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(productApi.middleware),
 });
 
 // Setup persistor
@@ -51,3 +53,7 @@ export const persistor = persistStore(store);
 
 // Type Export
 export type RootState = ReturnType<typeof store.getState>;
+
+// optional, but required for refetchOnFocus/refetchOnReconnect behaviors
+// see `setupListeners` docs - takes an optional callback as the 2nd arg for customization
+setupListeners(store.dispatch)

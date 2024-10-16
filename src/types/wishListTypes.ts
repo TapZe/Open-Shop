@@ -1,21 +1,14 @@
-export type WishListItem = {
-  id: number;
-  title: string;
-  price: string;
-  category: string;
-  description: string;
-  image: string;
-};
+import { product } from "./productTypes";
 
 export type WishListState = {
   wishList: {
-    [userId: number]: WishListItem[];
+    [userId: number]: product[];
   };
 };
 
 export type WishListPayload = {
   userId: number;
-  wishList: WishListItem;
+  wishList: product;
 };
 
 export type RemoveWishListPayload = {
