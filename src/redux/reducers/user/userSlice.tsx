@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserState } from "../../../types";
-import { jwtDecode, JwtPayload } from "jwt-decode";
+import { UserJwtPayload, UserState } from "../../../types";
+import { jwtDecode } from "jwt-decode";
 
 const initialState: UserState = {
   token: "",
-  tokenPayload: {} as JwtPayload,
+  tokenPayload: {} as UserJwtPayload,
 };
 
 const userSlice = createSlice({
@@ -14,12 +14,12 @@ const userSlice = createSlice({
     saveCurrentToken: (state: UserState, action: PayloadAction<string>) => {
       const token = action.payload;
       state.token = token;
-      const decoded = jwtDecode(token);
+      const decoded = jwtDecode<UserJwtPayload>(action.payload);
       state.tokenPayload = decoded;
     },
     removeCurrentToken: (state: UserState) => {
       state.token = "";
-      state.tokenPayload = {} as JwtPayload;
+      state.tokenPayload = {} as UserJwtPayload;
     },
   },
 });

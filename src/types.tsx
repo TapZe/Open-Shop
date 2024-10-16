@@ -14,9 +14,15 @@ export type LoginResponse = {
   token: string;
 };
 
+export interface UserJwtPayload extends JwtPayload {
+  user: string;
+  iat: number;
+  sub: string;
+}
+
 export type UserState = {
   token: string;
-  tokenPayload: JwtPayload;
+  tokenPayload: UserJwtPayload;
 };
 
 // Wish list
