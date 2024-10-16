@@ -8,7 +8,7 @@ const initialState: UserState = {
 };
 
 const userSlice = createSlice({
-  name: "user",
+  name: "userSlice",
   initialState,
   reducers: {
     saveCurrentToken: (state: UserState, action: PayloadAction<string>) => {

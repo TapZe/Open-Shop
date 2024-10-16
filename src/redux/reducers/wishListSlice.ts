@@ -10,7 +10,7 @@ const initialState: WishListState = {
 };
 
 const wishListSlice = createSlice({
-  name: "wishList",
+  name: "wishListSlice",
   initialState,
   reducers: {
     saveProduct: (
