@@ -16,6 +16,7 @@ import { combineReducers } from "redux";
 // Import reducer here
 import themeReducer from "./reducers/themeSlice";
 import userReducer from "./reducers/user/userSlice";
+import wishListReducer from "./reducers/wishListSlice";
 
 const persistConfig = {
   key: "root",
@@ -26,6 +27,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   theme: themeReducer,
   user: userReducer,
+  wishList: wishListReducer,
 });
 
 // for only one reducer needs persist, rootReducer can be replaced with the one reducer that needs it.
