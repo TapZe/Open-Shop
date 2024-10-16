@@ -17,8 +17,12 @@ const userSlice = createSlice({
       const decoded = jwtDecode(token);
       state.tokenPayload = decoded;
     },
+    removeCurrentToken: (state: UserState) => {
+      state.token = "";
+      state.tokenPayload = {} as JwtPayload;
+    },
   },
 });
 
-export const { saveCurrentToken } = userSlice.actions;
+export const { saveCurrentToken, removeCurrentToken } = userSlice.actions;
 export default userSlice.reducer;
