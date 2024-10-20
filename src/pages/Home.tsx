@@ -1,5 +1,11 @@
+import ProductHomeGrid from "../components/products/ProductHomeGrid";
+
 const Home: React.FC = () => {
-  return <div></div>;
+  return (
+    <>
+      <ProductHomeGrid />
+    </>
+  );
 };
 
 export default Home;
