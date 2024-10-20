@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 
 // Layout and 404 import
 import MainLayout from "./layouts/MainLayout";
+import AuthLayout from "./layouts/AuthLayout";
 import Error404 from "./pages/Error404";
 import Fallback from "./components/Fallback";
 
@@ -27,6 +28,17 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
+    ],
+  },
+  {
+    path: "/auth",
+    element: (
+      <Suspense fallback={<Fallback />}>
+        <AuthLayout />
+      </Suspense>
+    ),
+    children: [
+      // auth routes
     ],
   },
 ]);
