@@ -7,7 +7,7 @@ import Error404 from "./pages/Error404";
 import Fallback from "./components/Fallback";
 
 // Lazy-load when importing the pages
-// const Home = lazy(() => import("./pages/Home"));
+const Home = lazy(() => import("./pages/Home"));
 
 const router = createBrowserRouter([
   {
@@ -18,7 +18,16 @@ const router = createBrowserRouter([
       </Suspense>
     ),
     errorElement: <Error404 />,
-    children: [],
+    children: [
+      {
+        path: "",
+        element: (
+          <Suspense fallback={<Fallback />}>
+            <Home />
+          </Suspense>
+        ),
+      },
+    ],
   },
 ]);
 
