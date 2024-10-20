@@ -1,7 +1,7 @@
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   return (
     <>
       <div className="navbar bg-base-200 md:px-6">

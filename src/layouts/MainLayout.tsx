@@ -2,7 +2,7 @@ import Navbar from "../components/layouts/Navbar";
 import Footer from "../components/layouts/Footer";
 import { Outlet } from "react-router-dom";
 
-const MainLayout = () => {
+const MainLayout: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
