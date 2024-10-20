@@ -37,9 +37,7 @@ const router = createBrowserRouter([
         <AuthLayout />
       </Suspense>
     ),
-    children: [
-      // auth routes
-    ],
+    children: [],
   },
 ]);
 
