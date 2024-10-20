@@ -1,4 +1,4 @@
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart, faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar: React.FC = () => {
@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
           </div>
           <div className="tooltip tooltip-bottom" data-tip="Wishlist">
             <a className="btn btn-circle btn-ghost">
-              <FontAwesomeIcon icon={faHeart} />
+              <FontAwesomeIcon icon={faHeart} size="lg" />
             </a>
           </div>
           <div className="dropdown dropdown-end">
@@ -95,6 +95,12 @@ const Navbar: React.FC = () => {
                 <a>Logout</a>
               </li>
             </ul>
+          </div>
+          <div className="tooltip tooltip-bottom" data-tip="Switch Theme">
+            <a className="btn btn-circle btn-ghost">
+              <FontAwesomeIcon icon={faMoon} size="lg" />
+              <FontAwesomeIcon icon={faSun} size="lg" />
+            </a>
           </div>
         </div>
       </div>
