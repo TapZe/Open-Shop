@@ -9,6 +9,7 @@ import Fallback from "./components/Fallback";
 
 // Lazy-load when importing the pages
 const Home = lazy(() => import("./pages/Home"));
+const ProductDetail = lazy(() => import("./pages/ProductDetail"));
 
 const router = createBrowserRouter([
   {
@@ -21,10 +22,18 @@ const router = createBrowserRouter([
     errorElement: <Error404 />,
     children: [
       {
-        path: "",
+        path: "/",
         element: (
           <Suspense fallback={<Fallback />}>
             <Home />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/detail/{id}/product",
+        element: (
+          <Suspense fallback={<Fallback />}>
+            <ProductDetail />
           </Suspense>
         ),
       },
