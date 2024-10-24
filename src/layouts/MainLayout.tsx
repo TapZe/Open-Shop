@@ -8,7 +8,7 @@ const MainLayout: React.FC = () => {
     <div className="min-h-screen flex flex-col overflow-hidden">
       <Navbar />
       <Hero />
-      <main className="flex flex-grow sm:mx-2 md:mx-6 lg:mx-10 xl:mx-20 my-10 self-center">
+      <main className="flex flex-grow sm:mx-2 md:mx-6 lg:mx-10 xl:mx-20 my-10">
         <div className="w-full">
           <Outlet />
         </div>

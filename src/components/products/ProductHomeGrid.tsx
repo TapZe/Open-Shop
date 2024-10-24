@@ -1,20 +1,25 @@
-import ProductCard from "./cards/ProductCard";
+import { useGetAllCategoryQuery } from "../../redux/reducers/product/productCatFetchAPI";
+import ErrorMessage from "../ErrorMessage";
+import Fallback from "../Fallback";
+import ProductCatSection from "./cards/ProductCatSection";
 
-const ProductHomeGrid = () => {
+const ProductHomeGrid: React.FC = () => {
+  const { data, error, isLoading } = useGetAllCategoryQuery();
+
+  if (isLoading) {
+    return <Fallback />;
+  }
+
+  if (error) {
+    return <ErrorMessage error={error} />;
+  }
+
   return (
     <>
       <div className="grid grid-flow-row py-10 gap-5">
-        <h2 className="text-xl">Cat 1</h2>
-        <div className="grid md:grid-flow-col gap-x-4 md:overflow-x-scroll no-scrollbar p-5 mb-5">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </div>
+        {data?.map((category, index) => (
+          <ProductCatSection key={index} category={category} />
+        ))}
       </div>
     </>
   );

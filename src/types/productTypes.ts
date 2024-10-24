@@ -10,3 +10,7 @@ export type product = {
 export type allProductsResponse = product[];
 
 export type categoryResponse = string[];
+
+export type categorySectionProps = {
+  category: string;
+}
