@@ -2,8 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 // Layout and 404 import
-import MainLayout from "./layouts/MainLayout";
+import HomeLayout from "./layouts/HomeLayout";
 import AuthLayout from "./layouts/AuthLayout";
+import MainLayout from "./layouts/MainLayout";
 import Error404 from "./pages/Error404";
 import Fallback from "./components/Fallback";
 
@@ -16,24 +17,16 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <Suspense fallback={<Fallback />}>
-        <MainLayout />
+        <HomeLayout />
       </Suspense>
     ),
     errorElement: <Error404 />,
     children: [
       {
-        path: "/",
+        path: "",
         element: (
           <Suspense fallback={<Fallback />}>
             <Home />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/detail/{id}/product",
-        element: (
-          <Suspense fallback={<Fallback />}>
-            <ProductDetail />
           </Suspense>
         ),
       },
@@ -47,6 +40,24 @@ const router = createBrowserRouter([
       </Suspense>
     ),
     children: [],
+  },
+  {
+    path: "/product",
+    element: (
+      <Suspense fallback={<Fallback />}>
+        <MainLayout />
+      </Suspense>
+    ),
+    children: [
+      {
+        path: "detail/:id",
+        element: (
+          <Suspense fallback={<Fallback />}>
+            <ProductDetail />
+          </Suspense>
+        ),
+      },
+    ],
   },
 ]);
 
