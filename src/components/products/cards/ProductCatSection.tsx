@@ -2,6 +2,7 @@ import { useGetProductByCategoryQuery } from "../../../redux/reducers/product/pr
 import { categorySectionProps } from "../../../types/productTypes";
 import ErrorMessage from "../../ErrorMessage";
 import ProductCard from "./ProductCard";
+import ProductCardSkeleton from "./ProductCardSkeleton";
 
 const ProductCatSection: React.FC<categorySectionProps> = ({ category }) => {
   const formattedCategory = category
@@ -14,11 +15,29 @@ const ProductCatSection: React.FC<categorySectionProps> = ({ category }) => {
     return <ErrorMessage error={error} />;
   }
 
+  // Define how many skeleton to render
+  const skeletonCount = 5;
+  if (isLoading) {
+    return (
+      <>
+        <h2 className="text-xl">{formattedCategory}</h2>
+        <div className="grid md:grid-flow-col gap-x-4 md:overflow-x-scroll no-scrollbar p-5 mb-5">
+          {Array.from({ length: skeletonCount }).map((_, index) => (
+            <ProductCardSkeleton key={index} />
+          ))}
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <h2 className="text-xl">{formattedCategory}</h2>
       <div className="grid md:grid-flow-col gap-x-4 md:overflow-x-scroll no-scrollbar p-5 mb-5">
-        <ProductCard />
+        {data?.map((product) => {
+          const { id } = product;
+          return <ProductCard key={id} product={product} />;
+        })}
       </div>
     </>
   );

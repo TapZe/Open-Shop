@@ -1,7 +1,10 @@
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart, faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { productCardProps } from "../../../types/productTypes";
+import { Link } from "react-router-dom";
 
-const ProductCard = () => {
+const ProductCard: React.FC<productCardProps> = (props) => {
+  const { id, title, price, rating, image, description } = props.product;
   return (
     <>
       <div className="card bg-base-100 w-72 shadow-xl">
@@ -13,17 +16,32 @@ const ProductCard = () => {
             <FontAwesomeIcon icon={faHeart} />
           </button>
         </div>
-        <figure className="px-10 pt-10">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            alt="Shoes"
-            className="rounded-xl aspect-video object-cover"
-          />
-        </figure>
+        <Link
+          to={`/detail/${id}/product`}
+          className="px-10 pt-10 h-72 transition duration-300 ease-in-out hover:scale-110"
+        >
+          <div className="rounded-xl h-full overflow-hidden">
+            <img
+              src={image}
+              alt="Product Image"
+              className="rounded-xl object-scale-down"
+            />
+          </div>
+        </Link>
         <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
+          <div className="badge badge-secondary badge-outline">
+            <FontAwesomeIcon icon={faStar} />
+            &nbsp;{rating.rate}/5
+          </div>
+          <div className="text-2xl font-bold">${price}</div>
+          <Link
+            to={`/detail/${id}/product`}
+            className="card-title text-justify hover:underline"
+          >
+            {title}
+          </Link>
+          <p className="truncate">{description}</p>
+          <div className="card-actions justify-end mt-5">
             <button className="btn btn-primary">Add to Cart</button>
           </div>
         </div>
