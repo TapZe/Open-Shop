@@ -7,19 +7,16 @@ const ProductCard: React.FC<productCardProps> = (props) => {
   const { id, title, price, rating, image, description } = props.product;
   return (
     <>
-      <div className="card bg-base-100 w-72 shadow-xl">
+      <div className="card bg-base-100 w-72 shadow-xl transition-transform duration-300 transform hover:scale-105">
         <div
-          className="tooltip absolute top-2 right-2"
+          className="tooltip tooltip-left absolute top-2 right-2"
           data-tip="Add to wishlist"
         >
           <button className="btn btn-sm btn-primary btn-outline">
             <FontAwesomeIcon icon={faHeart} />
           </button>
         </div>
-        <Link
-          to={`/detail/${id}/product`}
-          className="px-10 pt-10 h-72 transition duration-300 ease-in-out hover:scale-110"
-        >
+        <figure className="px-10 pt-10 h-72">
           <div className="rounded-xl h-full overflow-hidden">
             <img
               src={image}
@@ -27,7 +24,7 @@ const ProductCard: React.FC<productCardProps> = (props) => {
               className="rounded-xl object-scale-down"
             />
           </div>
-        </Link>
+        </figure>
         <div className="card-body">
           <div className="badge badge-secondary badge-outline">
             <FontAwesomeIcon icon={faStar} />
@@ -35,7 +32,7 @@ const ProductCard: React.FC<productCardProps> = (props) => {
           </div>
           <div className="text-2xl font-bold">${price}</div>
           <Link
-            to={`/detail/${id}/product`}
+            to={`product/detail/${id}`}
             className="card-title text-justify hover:underline"
           >
             {title}
