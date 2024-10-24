@@ -22,6 +22,7 @@ export type categorySectionProps = {
 export type productCardProps = {
   title: string;
   price: number;
+  image: string;
   rating: {
     rate: number;
     count: number;
