@@ -8,7 +8,7 @@ export const productCategoryApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: BASE_URI }),
     refetchOnReconnect: true,
   endpoints: (builder) => ({
-    getAllCategory: builder.query<categoryResponse, null>({
+    getAllCategory: builder.query<categoryResponse, void>({
       query: () => `${PRODUCT_CAT_QUERY}`,
     }),
       getProductByCategory: builder.query<allProductsResponse, string>({
