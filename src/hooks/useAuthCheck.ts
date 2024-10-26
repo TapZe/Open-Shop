@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { removeCurrentToken } from '../redux/reducers/user/userSlice';
+import { useEffect } from 'react';
 
-const useAuthCheck = () => {
+const useAuthCheck = (): boolean => {
     const { tokenPayload } = useSelector((state: RootState) => state.persist.user);
     const dispatch = useDispatch();
 
@@ -16,12 +17,11 @@ const useAuthCheck = () => {
     // Check authentication
     const isAuthenticated = tokenExpiration ? now() <= tokenExpiration : false;
 
-    if (!isAuthenticated) {
-        dispatch(removeCurrentToken());
-    }
-
-    console.log(tokenExpiration, tokenPayload, isAuthenticated);
-    
+    useEffect(() => {
+        if (!isAuthenticated) {
+            dispatch(removeCurrentToken());
+        }
+    }, [isAuthenticated, dispatch]);
 
     return isAuthenticated;
 }
