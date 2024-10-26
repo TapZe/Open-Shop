@@ -11,7 +11,6 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import { combineReducers } from "redux";
-import { productApi } from "./reducers/product/productFetchAPI";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
 // Import reducer here
@@ -19,6 +18,8 @@ import themeReducer from "./reducers/themeSlice";
 import userReducer from "./reducers/user/userSlice";
 import wishListReducer from "./reducers/wishListSlice";
 import productQuantityReducer from "./reducers/product/productQuantitySlice";
+import { productApi } from "./reducers/product/productFetchAPI";
+import { userApi } from "./reducers/user/userLoginAPI";
 import { productCategoryApi } from "./reducers/product/productCatFetchAPI";
 
 const persistConfig = {
@@ -43,6 +44,7 @@ export const store = configureStore({
     persist: persistedReducer,
     [productApi.reducerPath]: productApi.reducer,
     [productCategoryApi.reducerPath]: productCategoryApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -50,7 +52,8 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }).concat(productApi.middleware)
-      .concat(productCategoryApi.middleware),
+      .concat(productCategoryApi.middleware)
+      .concat(userApi.middleware),
 });
 
 // Setup persistor

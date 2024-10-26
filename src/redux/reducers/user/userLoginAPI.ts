@@ -15,7 +15,7 @@ export const userApi = createApi({
         method: "POST",
         body: credentials,
       }),
-      async onQueryStarted(args, { dispatch, queryFulfilled }) {
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
           dispatch(saveCurrentToken(data.token));
