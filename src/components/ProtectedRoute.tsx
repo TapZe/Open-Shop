@@ -3,9 +3,7 @@ import AuthCheck from "../utils/authCheck";
 import { ProtectedRouteProps } from "../types/generalTypes";
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
-  const authExpired = AuthCheck();
-
-  return !authExpired ? (
+  return AuthCheck() ? (
     <>
       {element} {/* Render the protected component if authenticated */}
     </>
