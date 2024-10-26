@@ -1,6 +1,7 @@
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeBtn from "./buttons/ThemeBtn";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   return (
@@ -23,16 +24,29 @@ const Navbar: React.FC = () => {
             />
           </div> */}
           <div className="tooltip tooltip-bottom" data-tip="Wishlist">
-            <a className="btn btn-circle btn-ghost">
+            <NavLink
+              to={"/"}
+              className={({ isActive }) =>
+                isActive
+                  ? "btn btn-circle btn-ghost border-primary text-primary"
+                  : "btn btn-circle btn-ghost"
+              }
+            >
               <FontAwesomeIcon icon={faHeart} size="lg" />
-            </a>
+            </NavLink>
           </div>
           <div className="dropdown dropdown-end">
             <div className="tooltip tooltip-bottom" data-tip="Shopping Cart">
-              <div
+              <NavLink
+                to={"/"}
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle"
+                className={({ isActive }) =>
+                  isActive
+                    ? "btn btn-circle btn-ghost border-primary text-primary"
+                    : "btn btn-circle btn-ghost"
+                }
+                onClick={(event) => event.preventDefault()}
               >
                 <div className="indicator">
                   <svg
@@ -51,7 +65,7 @@ const Navbar: React.FC = () => {
                   </svg>
                   <span className="badge badge-sm indicator-item">8</span>
                 </div>
-              </div>
+              </NavLink>
             </div>
             <div
               tabIndex={0}
@@ -61,14 +75,16 @@ const Navbar: React.FC = () => {
                 <span className="text-lg font-bold">8 Items</span>
                 <span className="text-info">Subtotal: $999</span>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
+                  <Link to={`/`} className="btn btn-primary btn-block">
                     View cart
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
-          <a className="btn">Sign Up</a>
+          <Link to={`/`} className="btn">
+            Sign Up
+          </Link>
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
@@ -87,10 +103,10 @@ const Navbar: React.FC = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a className="justify-between">Profile</a>
+                <Link to={`/`}>Profile</Link>
               </li>
               <li>
-                <a>Logout</a>
+                <button>Logout</button>
               </li>
             </ul>
           </div>
