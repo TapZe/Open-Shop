@@ -1,6 +1,10 @@
 import React from "react";
+import useAuthCheck from "../hooks/useAuthCheck";
+import { Link } from "react-router-dom";
 
 const Hero: React.FC = () => {
+  const isAuthenticated = useAuthCheck();
+
   return (
     <>
       <div className="hero bg-base-200 h-80 flex items-center justify-center">
@@ -16,7 +20,11 @@ const Hero: React.FC = () => {
               competitive prices, and experience seamless transactions. Start
               your shopping journey with us today!
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            {!isAuthenticated && (
+              <Link to={`/auth/login`} className="btn btn-primary">
+                Get Started
+              </Link>
+            )}
           </div>
         </div>
       </div>
