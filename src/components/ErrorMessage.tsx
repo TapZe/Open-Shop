@@ -4,20 +4,25 @@ import { errorMsgProps } from "../types/generalTypes";
 
 const ErrorMessage: React.FC<errorMsgProps> = ({ error }) => {
   if ("status" in error) {
-    const errMsg = "error" in error ? error.error : JSON.stringify(error.data);
+    const errMsg =
+      "data" in error && error.data
+        ? error.data
+        : "error" in error
+        ? error.error
+        : "Unknown error";
     return (
-      <div role="alert" className="alert alert-error m-5">
+      <div role="alert" className="alert alert-error">
         <FontAwesomeIcon icon={faCircleXmark} />
         <p>
           An error has occurred:
-          <span> {errMsg}</span>
+          <span> {JSON.stringify(errMsg)}</span>
         </p>
       </div>
     );
   }
 
   return (
-    <div role="alert" className="alert alert-error m-5">
+    <div role="alert" className="alert alert-error">
       <FontAwesomeIcon icon={faCircleXmark} />
       <p>
         An error has occurred:
