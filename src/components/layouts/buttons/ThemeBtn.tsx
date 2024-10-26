@@ -8,8 +8,8 @@ const ThemeBtn: React.FC = () => {
   const { isDark } = useSelector((state: RootState) => state.persist.theme);
   const dispatch = useDispatch();
 
-  const handleChangeTheme = () => {
-    dispatch(saveTheme(!isDark));
+  const handleChangeTheme = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(saveTheme(event.target.checked));
   };
 
   return (
@@ -21,8 +21,8 @@ const ThemeBtn: React.FC = () => {
             type="checkbox"
             className="theme-controller"
             value="light"
-            onClick={handleChangeTheme}
-            checked={!isDark}
+            onChange={handleChangeTheme}
+            checked={isDark}
           />
 
           {/* sun icon */}
