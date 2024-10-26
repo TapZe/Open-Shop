@@ -5,15 +5,14 @@ import { BASE_URI, CATEGORY_QUERY, PRODUCT_CAT_QUERY } from '../../../constants/
 // Define a service using a base URL and expected endpoints
 export const productCategoryApi = createApi({
   reducerPath: 'productCategoryApi',
-    baseQuery: fetchBaseQuery({ baseUrl: BASE_URI }),
+  baseQuery: fetchBaseQuery({ baseUrl: BASE_URI }),
+  keepUnusedDataFor: 3600,
   endpoints: (builder) => ({
     getAllCategory: builder.query<categoryResponse, void>({
       query: () => `${CATEGORY_QUERY}`,
-      keepUnusedDataFor: 3600,
     }),
     getProductByCategory: builder.query<allProductsResponse, string>({
       query: (category) => `${PRODUCT_CAT_QUERY}/${category}`,
-      keepUnusedDataFor: 3600,
     }),
   }),
 })

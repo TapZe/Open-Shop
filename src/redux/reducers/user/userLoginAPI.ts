@@ -3,8 +3,8 @@ import { LoginCredentials, LoginResponse } from "../../../types/types";
 import { saveCurrentToken } from "./userSlice";
 import { BASE_URI, LOGIN_QUERY } from "../../../constants/apiBaseURI";
 
-export const userApi = createApi({
-  reducerPath: "userApi",
+export const userLoginApi = createApi({
+  reducerPath: "userLoginApi",
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URI,
   }),
@@ -27,4 +27,4 @@ export const userApi = createApi({
   }),
 });
 
-export const { useLoginUserMutation } = userApi;
+export const { useLoginUserMutation } = userLoginApi;

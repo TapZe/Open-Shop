@@ -6,11 +6,11 @@ import { initiateQuantity } from './productQuantitySlice';
 // Define a service using a base URL and expected endpoints
 export const productApi = createApi({
   reducerPath: 'productApi',
-    baseQuery: fetchBaseQuery({ baseUrl: BASE_URI }),
+  baseQuery: fetchBaseQuery({ baseUrl: BASE_URI }),
+  keepUnusedDataFor: 3600,
   endpoints: (builder) => ({
     getAllProduct: builder.query<allProductsResponse, void>({
       query: () => `${PRODUCT_QUERY}`,
-      keepUnusedDataFor: 3600,
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
@@ -23,7 +23,6 @@ export const productApi = createApi({
     }),
     getProductById: builder.query<product, number>({
       query: (id) => `${PRODUCT_QUERY}/${id}`,
-      keepUnusedDataFor: 3600,
     }),
   }),
 })

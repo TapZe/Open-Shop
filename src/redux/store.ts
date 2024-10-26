@@ -19,8 +19,9 @@ import userReducer from "./reducers/user/userSlice";
 import wishListReducer from "./reducers/wishListSlice";
 import productQuantityReducer from "./reducers/product/productQuantitySlice";
 import { productApi } from "./reducers/product/productFetchAPI";
-import { userApi } from "./reducers/user/userLoginAPI";
+import { userLoginApi } from "./reducers/user/userLoginAPI";
 import { productCategoryApi } from "./reducers/product/productCatFetchAPI";
+import { userApi } from "./reducers/user/userAPI";
 
 const persistConfig = {
   key: "root",
@@ -44,6 +45,7 @@ export const store = configureStore({
     persist: persistedReducer,
     [productApi.reducerPath]: productApi.reducer,
     [productCategoryApi.reducerPath]: productCategoryApi.reducer,
+    [userLoginApi.reducerPath]: userLoginApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -53,6 +55,7 @@ export const store = configureStore({
       },
     }).concat(productApi.middleware)
       .concat(productCategoryApi.middleware)
+      .concat(userLoginApi.middleware)
       .concat(userApi.middleware),
 });
 
