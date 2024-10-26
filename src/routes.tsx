@@ -11,6 +11,8 @@ import Fallback from "./components/Fallback";
 // Lazy-load when importing the pages
 const Home = lazy(() => import("./pages/Home"));
 const ProductDetail = lazy(() => import("./pages/product/ProductDetail"));
+const Login = lazy(() => import("./pages/auth/Login"));
+const Register = lazy(() => import("./pages/auth/Register"));
 
 const router = createBrowserRouter([
   {
@@ -39,7 +41,24 @@ const router = createBrowserRouter([
         <AuthLayout />
       </Suspense>
     ),
-    children: [],
+    children: [
+      {
+        path: "login",
+        element: (
+          <Suspense fallback={<Fallback />}>
+            <Login />
+          </Suspense>
+        ),
+      },
+      {
+        path: "register",
+        element: (
+          <Suspense fallback={<Fallback />}>
+            <Register />
+          </Suspense>
+        ),
+      },
+    ],
   },
   {
     path: "/product",

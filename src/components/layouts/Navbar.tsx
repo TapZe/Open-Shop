@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
               </div>
             </div>
           </div>
-          <Link to={`/`} className="btn">
+          <Link to={`/auth/login`} className="btn">
             Sign Up
           </Link>
           <div className="dropdown dropdown-end">
