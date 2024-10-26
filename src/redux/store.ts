@@ -18,6 +18,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import themeReducer from "./reducers/themeSlice";
 import userReducer from "./reducers/user/userSlice";
 import wishListReducer from "./reducers/wishListSlice";
+import productQuantityReducer from "./reducers/product/productQuantitySlice";
 import { productCategoryApi } from "./reducers/product/productCatFetchAPI";
 
 const persistConfig = {
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   theme: themeReducer,
   user: userReducer,
   wishList: wishListReducer,
+  productQuantity:  productQuantityReducer,
 });
 
 // for only one reducer needs persist, rootReducer can be replaced with the one reducer that needs it.

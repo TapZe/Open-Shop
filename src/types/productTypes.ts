@@ -22,3 +22,12 @@ export type categorySectionProps = {
 export type productCardProps = {
   product: product;
 }
+
+export type productQuantity = {
+  id: number;
+  quantity: number;
+}
+
+export type productQuantityState = {
+  productQuantity: productQuantity[];
+}
