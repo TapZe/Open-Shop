@@ -32,7 +32,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     try {
       await loginUser(credentials).unwrap();
-      setTimeout(() => navigate("/"), 1000);
+      setTimeout(() => navigate("/"), 500);
     } catch (err) {
       console.error("Login Error:", err);
     }
@@ -51,6 +51,7 @@ const Login: React.FC = () => {
               Discover amazing products at unbeatable prices. Shop now and
               experience the convenience of online shopping with OpenShop.
             </p>
+            {isError && <ErrorMessage error={error} />}
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <form className="card-body" onSubmit={handleLogin}>
@@ -96,7 +97,6 @@ const Login: React.FC = () => {
                   {isLoading ? "Logging in..." : "Login"}
                 </button>
               </div>
-              {isError && <ErrorMessage error={error} />}
               {isSuccess && <p className="text-green-500">Login successful!</p>}
               <div className="form-control mt-4">
                 <Link to={`/`} className="btn btn-secondary">
