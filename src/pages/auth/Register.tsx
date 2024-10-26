@@ -20,14 +20,14 @@ const Register: React.FC = () => {
               <table className="table w-full">
                 <thead>
                   <tr>
-                    <th className="text-center">Test Account</th>
+                    <th className="text-center">Username</th>
                     <th className="text-center">Password</th>
                   </tr>
                 </thead>
                 <tbody>
                   {data.map((user) => (
                     <tr key={user.id}>
-                      <td className="text-center">{user.email}</td>
+                      <td className="text-center">{user.username}</td>
                       <td className="text-center">{user.password}</td>
                     </tr>
                   ))}

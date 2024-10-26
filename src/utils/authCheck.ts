@@ -8,7 +8,8 @@ const AuthCheck = () => {
     // Get the current time in seconds
     const now = () => Math.floor(Date.now() / 1000);
 
-    // / Calculate token expiration time (assuming 'iat' is issued at time)
+    // Calculate token expiration time (assuming 'iat' is issued at time)
+    // 6 Hours since login before expired
     const tokenExpiration = tokenPayload?.iat + (6 * 60 * 60) || 0;
 
     const isTokenExpired = tokenExpiration ? now() > tokenExpiration : true;
