@@ -1,5 +1,6 @@
-import { faHeart, faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ThemeBtn from "./buttons/ThemeBtn";
 
 const Navbar: React.FC = () => {
   return (
@@ -14,13 +15,13 @@ const Navbar: React.FC = () => {
           </a>
         </div>
         <div className="navbar-end md:pr-4 gap-1">
-          <div className="form-control">
+          {/* <div className="form-control">
             <input
               type="text"
               placeholder="Search"
               className="input input-bordered w-24 md:w-auto"
             />
-          </div>
+          </div> */}
           <div className="tooltip tooltip-bottom" data-tip="Wishlist">
             <a className="btn btn-circle btn-ghost">
               <FontAwesomeIcon icon={faHeart} size="lg" />
@@ -96,12 +97,7 @@ const Navbar: React.FC = () => {
               </li>
             </ul>
           </div>
-          <div className="tooltip tooltip-bottom" data-tip="Switch Theme">
-            <a className="btn btn-circle btn-ghost">
-              <FontAwesomeIcon icon={faMoon} size="lg" />
-              <FontAwesomeIcon icon={faSun} size="lg" />
-            </a>
-          </div>
+          <ThemeBtn />
         </div>
       </div>
     </>
