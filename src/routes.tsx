@@ -8,6 +8,8 @@ import MainLayout from "./layouts/MainLayout";
 import Error404 from "./pages/Error404";
 import Fallback from "./components/Fallback";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Wishlist from "./pages/product/Wishlist";
+import ProductCart from "./pages/product/ProductCart";
 
 // Lazy-load when importing the pages
 const Home = lazy(() => import("./pages/Home"));
@@ -73,7 +75,23 @@ const router = createBrowserRouter([
         path: "detail/:id",
         element: (
           <Suspense fallback={<Fallback />}>
-            <ProtectedRoute element={<ProductDetail />} />
+            <ProductDetail />
+          </Suspense>
+        ),
+      },
+      {
+        path: "wishlist",
+        element: (
+          <Suspense fallback={<Fallback />}>
+            <ProtectedRoute element={<Wishlist />} />
+          </Suspense>
+        ),
+      },
+      {
+        path: "cart",
+        element: (
+          <Suspense fallback={<Fallback />}>
+            <ProtectedRoute element={<ProductCart />} />
           </Suspense>
         ),
       },
