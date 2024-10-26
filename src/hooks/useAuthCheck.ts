@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { removeCurrentToken } from '../redux/reducers/user/userSlice';
 
-const AuthCheck = () => {
+const useAuthCheck = () => {
     const { tokenPayload } = useSelector((state: RootState) => state.persist.user);
     const dispatch = useDispatch();
 
@@ -26,4 +26,4 @@ const AuthCheck = () => {
     return isAuthenticated;
 }
 
-export default AuthCheck;
+export default useAuthCheck;

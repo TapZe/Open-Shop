@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../../redux/reducers/user/userLoginAPI";
 import ErrorMessage from "../../components/ErrorMessage";
+import useAuthCheck from "../../hooks/useAuthCheck";
 
 const Login: React.FC = () => {
   const [credentials, setCredentials] = useState<{
@@ -13,6 +14,14 @@ const Login: React.FC = () => {
   });
   const [loginUser, { isLoading, isError, isSuccess, error }] =
     useLoginUserMutation();
+  const navigate = useNavigate();
+  const isAuthenticated = useAuthCheck();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -23,6 +32,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     try {
       await loginUser(credentials).unwrap();
+      setTimeout(() => navigate("/"), 1000);
     } catch (err) {
       console.error("Login Error:", err);
     }

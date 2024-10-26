@@ -1,9 +1,9 @@
 import { Navigate } from "react-router-dom";
-import AuthCheck from "../utils/authCheck";
+import useAuthCheck from "../hooks/useAuthCheck";
 import { ProtectedRouteProps } from "../types/generalTypes";
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
-  return AuthCheck() ? (
+  return useAuthCheck() ? (
     <>
       {element} {/* Render the protected component if authenticated */}
     </>
