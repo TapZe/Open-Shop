@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { allProductsResponse, product } from '../../../types/types'
+import type { AllProductsResponse, Product } from '../../../types/types'
 import { BASE_URI, PRODUCT_QUERY } from '../../../constants/apiBaseURI'
 import { initiateQuantity } from './productQuantitySlice';
 
@@ -9,7 +9,7 @@ export const productApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URI }),
   keepUnusedDataFor: 3600,
   endpoints: (builder) => ({
-    getAllProduct: builder.query<allProductsResponse, void>({
+    getAllProduct: builder.query<AllProductsResponse, void>({
       query: () => `${PRODUCT_QUERY}`,
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
@@ -21,7 +21,7 @@ export const productApi = createApi({
         }
       },
     }),
-    getProductById: builder.query<product, number>({
+    getProductById: builder.query<Product, number>({
       query: (id) => `${PRODUCT_QUERY}/${id}`,
     }),
   }),

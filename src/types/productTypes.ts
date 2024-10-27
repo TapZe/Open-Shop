@@ -1,4 +1,4 @@
-export type product = {
+export type Product = {
   id: number;
   title: string;
   price: number;
@@ -11,23 +11,23 @@ export type product = {
   }
 }
 
-export type allProductsResponse = product[];
+export type AllProductsResponse = Product[];
 
-export type categoryResponse = string[];
+export type CategoryResponse = string[];
 
-export type categorySectionProps = {
+export type CategorySectionProps = {
   category: string;
 }
 
-export type productCardProps = {
-  product: product;
+export type ProductCardProps = {
+  product: Product;
 }
 
-export type productQuantity = {
+export type ProductQuantity = {
   id: number;
   quantity: number;
 }
 
-export type productQuantityState = {
-  productQuantity: productQuantity[];
+export type ProductQuantityState = {
+  productQuantity: ProductQuantity[];
 }

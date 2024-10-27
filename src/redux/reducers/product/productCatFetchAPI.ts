@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { allProductsResponse, categoryResponse } from '../../../types/types'
+import type { AllProductsResponse, CategoryResponse } from '../../../types/types'
 import { BASE_URI, CATEGORY_QUERY, PRODUCT_CAT_QUERY } from '../../../constants/apiBaseURI'
 
 // Define a service using a base URL and expected endpoints
@@ -8,10 +8,10 @@ export const productCategoryApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URI }),
   keepUnusedDataFor: 3600,
   endpoints: (builder) => ({
-    getAllCategory: builder.query<categoryResponse, void>({
+    getAllCategory: builder.query<CategoryResponse, void>({
       query: () => `${CATEGORY_QUERY}`,
     }),
-    getProductByCategory: builder.query<allProductsResponse, string>({
+    getProductByCategory: builder.query<AllProductsResponse, string>({
       query: (category) => `${PRODUCT_CAT_QUERY}/${category}`,
     }),
   }),

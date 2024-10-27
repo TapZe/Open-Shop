@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { productQuantityState } from "../../../types/productTypes";
+import { ProductQuantityState } from "../../../types/productTypes";
 
-const initialState: productQuantityState = {
+const initialState: ProductQuantityState = {
   productQuantity: [],
 };
 
@@ -9,7 +9,7 @@ const productQuantitySlice = createSlice({
   name: "productQuantitySlice",
   initialState,
   reducers: {
-    initiateQuantity: (state: productQuantityState, action: PayloadAction<number[]>) => {
+    initiateQuantity: (state: ProductQuantityState, action: PayloadAction<number[]>) => {
         if (state.productQuantity.length < 1) {
             action.payload.map((id) => {
                 const randomQuantity = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
@@ -17,7 +17,7 @@ const productQuantitySlice = createSlice({
             })
         }
     },
-    resetQuantity: (state: productQuantityState) => {
+    resetQuantity: (state: ProductQuantityState) => {
         state.productQuantity = [];
     },
   },
