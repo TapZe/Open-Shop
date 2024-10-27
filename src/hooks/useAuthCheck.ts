@@ -3,7 +3,7 @@ import { RootState } from '../redux/store';
 import { removeCurrentToken } from '../redux/reducers/user/userSlice';
 import { useEffect } from 'react';
 
-const useAuthCheck = (): boolean => {
+const useAuthCheck = () => {
     const { tokenPayload } = useSelector((state: RootState) => state.persist.user);
     const dispatch = useDispatch();
 
