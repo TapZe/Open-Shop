@@ -8,7 +8,6 @@ const ProductCatSection: React.FC<CategorySectionProps> = ({ category }) => {
   const formattedCategory = category
     .toLowerCase()
     .replace(/\b\w/g, (l) => l.toUpperCase());
-
   const { data, error, isLoading } = useGetProductByCategoryQuery(category);
 
   if (error) {
