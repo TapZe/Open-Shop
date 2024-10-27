@@ -18,6 +18,7 @@ import themeReducer from "./reducers/themeSlice";
 import userReducer from "./reducers/user/userSlice";
 import wishListReducer from "./reducers/wishListSlice";
 import productQuantityReducer from "./reducers/product/productQuantitySlice";
+import cartReducer from "./reducers/cartSlice";
 import { productApi } from "./reducers/product/productFetchAPI";
 import { userLoginApi } from "./reducers/user/userLoginAPI";
 import { productCategoryApi } from "./reducers/product/productCatFetchAPI";
@@ -33,7 +34,8 @@ const rootReducer = combineReducers({
   theme: themeReducer,
   user: userReducer,
   wishList: wishListReducer,
-  productQuantity:  productQuantityReducer,
+  productQuantity: productQuantityReducer,
+  cart: cartReducer,
 });
 
 // for only one reducer needs persist, rootReducer can be replaced with the one reducer that needs it.
