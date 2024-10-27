@@ -8,14 +8,14 @@ import MainLayout from "./layouts/MainLayout";
 import Error404 from "./pages/Error404";
 import Fallback from "./components/Fallback";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Wishlist from "./pages/product/Wishlist";
-import ProductCart from "./pages/product/ProductCart";
 
 // Lazy-load when importing the pages
 const Home = lazy(() => import("./pages/Home"));
 const ProductDetail = lazy(() => import("./pages/product/ProductDetail"));
 const Login = lazy(() => import("./pages/auth/Login"));
 const Register = lazy(() => import("./pages/auth/Register"));
+const Wishlist = lazy(() => import("./pages/product/Wishlist"));
+const ProductCart = lazy(() => import("./pages/product/ProductCart"));
 
 const router = createBrowserRouter([
   {
