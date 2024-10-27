@@ -8,11 +8,11 @@ import {
   saveProduct,
 } from "../../../redux/reducers/wishListSlice";
 import { RootState } from "../../../redux/store";
-import { WishListBtnProps } from "../../../types/wishListTypes";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { ProductProps } from "../../../types/productTypes";
 
-const AddWishlistBtn: React.FC<WishListBtnProps> = ({ product }) => {
+const AddWishlistBtn: React.FC<ProductProps> = ({ product }) => {
   const { wishList } = useSelector(
     (state: RootState) => state.persist.wishList
   );

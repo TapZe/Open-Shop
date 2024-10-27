@@ -1,12 +1,12 @@
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ProductCardProps } from "../../../types/productTypes";
+import { ProductProps } from "../../../types/productTypes";
 import { Link } from "react-router-dom";
 import { RootState } from "../../../redux/store";
 import { useSelector } from "react-redux";
 import AddWishlistBtn from "../buttons/AddWishlistBtn";
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<ProductProps> = ({ product }) => {
   const { productQuantity } = useSelector(
     (state: RootState) => state.persist.productQuantity
   );

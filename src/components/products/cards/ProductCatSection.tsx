@@ -1,10 +1,10 @@
 import { useGetProductByCategoryQuery } from "../../../redux/reducers/product/productCatFetchAPI";
-import { categorySectionProps } from "../../../types/productTypes";
+import { CategorySectionProps } from "../../../types/productTypes";
 import ErrorMessage from "../../ErrorMessage";
 import ProductCard from "./ProductCard";
 import ProductCardSkeleton from "./ProductCardSkeleton";
 
-const ProductCatSection: React.FC<categorySectionProps> = ({ category }) => {
+const ProductCatSection: React.FC<CategorySectionProps> = ({ category }) => {
   const formattedCategory = category
     .toLowerCase()
     .replace(/\b\w/g, (l) => l.toUpperCase());

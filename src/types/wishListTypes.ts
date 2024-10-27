@@ -15,7 +15,3 @@ export type RemoveWishListPayload = {
   userId: number;
   productId: number;
 };
-
-export type WishListBtnProps = {
-  product: Product;
-}
