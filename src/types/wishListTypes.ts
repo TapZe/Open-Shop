@@ -1,17 +1,21 @@
-import { product } from "./productTypes";
+import { Product } from "./productTypes";
 
 export type WishListState = {
   wishList: {
-    [userId: number]: product[];
+    [userId: number]: Product[];
   };
 };
 
 export type WishListPayload = {
   userId: number;
-  wishList: product;
+  wishList: Product;
 };
 
 export type RemoveWishListPayload = {
   userId: number;
   productId: number;
 };
+
+export type WishListBtnProps = {
+  product: Product;
+}

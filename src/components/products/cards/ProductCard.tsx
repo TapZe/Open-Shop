@@ -1,15 +1,16 @@
-import { faHeart, faStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { productCardProps } from "../../../types/productTypes";
+import { ProductCardProps } from "../../../types/productTypes";
 import { Link } from "react-router-dom";
 import { RootState } from "../../../redux/store";
 import { useSelector } from "react-redux";
+import AddWishlistBtn from "../buttons/AddWishlistBtn";
 
-const ProductCard: React.FC<productCardProps> = (props) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { productQuantity } = useSelector(
     (state: RootState) => state.persist.productQuantity
   );
-  const { id, title, price, rating, image, description } = props.product;
+  const { id, title, price, rating, image, description } = product;
 
   // Find the current product quantity
   const productInCart = productQuantity.find((product) => product.id === id);
@@ -18,14 +19,7 @@ const ProductCard: React.FC<productCardProps> = (props) => {
   return (
     <>
       <div className="card bg-base-100 w-72 shadow-xl transition-transform duration-300 transform hover:scale-105">
-        <div
-          className="tooltip tooltip-left absolute top-2 right-2"
-          data-tip="Add to wishlist"
-        >
-          <button className="btn btn-sm btn-primary btn-outline">
-            <FontAwesomeIcon icon={faHeart} />
-          </button>
-        </div>
+        <AddWishlistBtn product={product} />
         <figure className="px-10 pt-10 h-72">
           <div className="rounded-xl h-full overflow-hidden">
             <img
