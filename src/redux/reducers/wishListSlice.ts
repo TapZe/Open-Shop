@@ -6,7 +6,7 @@ import {
 } from "../../types/types";
 
 const initialState: WishListState = {
-  wishList: [],
+  wishList: {},
 };
 
 const wishListSlice = createSlice({
