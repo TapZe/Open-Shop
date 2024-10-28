@@ -43,7 +43,7 @@ const AddWishlistBtn: React.FC<ProductProps> = ({ product }) => {
   return (
     <>
       <div
-        className="tooltip tooltip-left absolute top-2 right-2"
+        className="tooltip tooltip-left"
         data-tip={isSaved ? "Remove from wishlist" : "Add to wishlist"}
       >
         <button

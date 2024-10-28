@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { RootState } from "../../../redux/store";
 import { useSelector } from "react-redux";
 import AddWishlistBtn from "../buttons/AddWishlistBtn";
+import AddCartBtn from "../buttons/AddCartBtn";
 
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
   const { productQuantity } = useSelector(
@@ -19,7 +20,9 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
   return (
     <>
       <div className="card bg-base-100 w-72 shadow-xl transition-transform duration-300 transform hover:scale-105">
-        <AddWishlistBtn product={product} />
+        <div className="absolute top-2 right-2">
+          <AddWishlistBtn product={product} />
+        </div>
         <figure className="px-10 pt-10 h-72">
           <div className="rounded-xl h-full overflow-hidden">
             <img
@@ -46,7 +49,7 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
             Quantity: {quantity}
           </div>
           <div className="card-actions justify-end mt-5">
-            <button className="btn btn-primary">Add to Cart</button>
+            <AddCartBtn product={product} />
           </div>
         </div>
       </div>

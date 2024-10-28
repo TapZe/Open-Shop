@@ -4,10 +4,12 @@ interface CartProduct extends Product {
     quantity: number;
 }
 
-export type CartState = {
-  cart: {
+export type Cart = {
     [userId: number]: CartProduct[];
-  };
+}
+
+export type CartState = {
+    cart: Cart;
 };
 
 export type AddToCartPayload = {
