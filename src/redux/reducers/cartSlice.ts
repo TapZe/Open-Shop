@@ -36,13 +36,51 @@ const cartSlice = createSlice({
       state: CartState,
       action: PayloadAction<DecreaseFromCartPayload>
     ) => {
-     
+      const { userId, productId } = action.payload;
+
+      if (state.cart[userId]) { // Check does the user exist
+        // Find the product index
+        const existingProductIndex = state.cart[userId].findIndex(
+          (item) => item.id === productId
+        );
+
+        if (existingProductIndex !== -1) { // Make sure the product exist
+          const existingProduct = state.cart[userId][existingProductIndex];
+
+          if (existingProduct.quantity > 1) {
+            // Decrease product quantity by 1
+            existingProduct.quantity -= 1;
+          } else {
+            // Quantity is 1, remove the product from the cart
+            state.cart[userId].splice(existingProductIndex, 1);
+          }
+        }
+      }
     },
     changeProductQuantityInCart: (
       state: CartState,
       action: PayloadAction<ProductQuantityInCartPayload>
     ) => {
-      
+      const { userId, productId, quantity } = action.payload;
+
+      if (state.cart[userId]) { // Check does the user exist
+        // Find the product index
+        const existingProductIndex = state.cart[userId].findIndex(
+          (item) => item.id === productId
+        );
+
+        if (existingProductIndex !== -1) { // Make sure the product exist
+          const existingProduct = state.cart[userId][existingProductIndex];
+
+          if (quantity > 0) {
+            // Change quantity by the payload quantity
+            existingProduct.quantity = quantity;
+          } else {
+            // Quantity is below 1, remove the product from the cart
+            state.cart[userId].splice(existingProductIndex, 1);
+          }
+        }
+      }
     },
     removeProductFromCart: (
       state: CartState,
