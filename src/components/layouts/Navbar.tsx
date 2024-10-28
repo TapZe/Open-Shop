@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <div className="navbar bg-base-200 md:px-6">
+      <div className="navbar bg-base-200 md:px-6 sticky top-0 z-50">
         <div className="navbar-start">
           <Link to={`/`} className="btn btn-ghost text-xl">
             <p>
