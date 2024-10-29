@@ -9,7 +9,7 @@ const HomeLayout: React.FC = () => {
       <Navbar />
       <div className="overflow-hidden flex-grow">
         <Hero />
-        <main className="flex sm:mx-2 md:mx-6 lg:mx-10 xl:mx-20 my-10 self-center">
+        <main className="sm:mx-2 md:mx-6 lg:mx-10 xl:mx-20 my-10 flex flex-col self-center">
           <div className="w-full">
             <Outlet />
           </div>
