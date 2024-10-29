@@ -39,7 +39,7 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
           </div>
           <div className="text-2xl font-bold">${price}</div>
           <Link
-            to={`product/detail/${id}`}
+            to={`/product/detail/${id}`}
             className="card-title text-justify hover:underline"
           >
             {title}
