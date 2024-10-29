@@ -1,16 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
-import { RootState } from "../../../redux/store";
-import { useSelector } from "react-redux";
-import useAuthData from "../../../hooks/useAuthData";
+import useGetCartTotal from "../../../hooks/useGetCartTotal";
 
 const CartBtn = () => {
-  const { cart } = useSelector((state: RootState) => state.persist.cart);
-  const { data: userData } = useAuthData();
-
-  // Find the user total item in cart
-  const totalItemsInCart =
-    userData &&
-    cart[userData.id]?.reduce((total, item) => total + item.quantity, 0);
+  const { totalItems, totalPrice } = useGetCartTotal();
 
   return (
     <>
@@ -26,7 +18,7 @@ const CartBtn = () => {
                 : "btn btn-circle btn-ghost"
             }
             onClick={(event) => {
-              if (totalItemsInCart && totalItemsInCart > 0) {
+              if (totalItems && totalItems > 0) {
                 event.preventDefault();
               }
             }}
@@ -47,7 +39,7 @@ const CartBtn = () => {
                 />
               </svg>
               <span className="badge badge-secondary badge-sm indicator-item">
-                {totalItemsInCart || 0}
+                {totalItems || 0}
               </span>
             </div>
           </NavLink>
@@ -55,14 +47,12 @@ const CartBtn = () => {
         <div
           tabIndex={0}
           className={`card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow ${
-            !(totalItemsInCart && totalItemsInCart > 0) && "hidden"
+            !(totalItems && totalItems > 0) && "hidden"
           }`}
         >
           <div className="card-body">
-            <span className="text-lg font-bold">
-              {totalItemsInCart || 0} Items
-            </span>
-            <span className="text-info">Subtotal: $0</span>
+            <span className="text-lg font-bold">{totalItems || 0} Items</span>
+            <span className="text-info">Subtotal: ${totalPrice}</span>
             <div className="card-actions">
               <Link to={`/product/cart`} className="btn btn-primary btn-block">
                 View cart
