@@ -53,19 +53,30 @@ const CartQuantityBtn: React.FC<ProductProps> = ({ product }) => {
 
   return (
     <>
-      <button onClick={handleDecrement} disabled={isLoading || quantity === 0}>
-        -
-      </button>
-      <input
-        type="number"
-        value={quantity}
-        min={0}
-        onChange={handleChange}
-        disabled={isLoading}
-      />
-      <button onClick={handleIncrement} disabled={isLoading}>
-        +
-      </button>
+      <div className="grid grid-cols-3">
+        <button
+          className="btn btn-outline btn-primary"
+          onClick={handleDecrement}
+          disabled={isLoading || quantity === 0}
+        >
+          -
+        </button>
+        <input
+          className="input input-secondary"
+          type="number"
+          value={quantity}
+          min={0}
+          onChange={handleChange}
+          disabled={isLoading}
+        />
+        <button
+          className="btn btn-outline btn-primary"
+          onClick={handleIncrement}
+          disabled={isLoading}
+        >
+          +
+        </button>
+      </div>
     </>
   );
 };
