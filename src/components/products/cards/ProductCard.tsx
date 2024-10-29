@@ -14,8 +14,8 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
   const { id, title, price, rating, image, description } = product;
 
   // Find the current product quantity
-  const productInCart = productQuantity.find((product) => product.id === id);
-  const quantity = productInCart ? productInCart.quantity : 0;
+  const currentProduct = productQuantity.find((product) => product.id === id);
+  const quantity = currentProduct ? currentProduct.quantity : 0;
 
   return (
     <>

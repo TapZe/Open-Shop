@@ -11,9 +11,16 @@ import {
 
 const CartQuantityBtn: React.FC<ProductProps> = ({ product }) => {
   const { cart } = useSelector((state: RootState) => state.persist.cart);
+  const { productQuantity } = useSelector(
+    (state: RootState) => state.persist.productQuantity
+  );
   const dispatch = useDispatch();
   const { data: userData, isLoading } = useAuthData();
   const [quantity, setQuantity] = useState(0);
+
+  // Find the current product quantity
+  const currentProduct = productQuantity.find((item) => item.id === product.id);
+  const currentQuantity = currentProduct ? currentProduct.quantity : 0;
 
   // Check if the product is in the cart and get its quantity
   const productInCart =
@@ -25,7 +32,7 @@ const CartQuantityBtn: React.FC<ProductProps> = ({ product }) => {
   }, [cartQuantity]);
 
   const handleIncrement = () => {
-    if (userData) {
+    if (userData && quantity < currentQuantity) {
       dispatch(addProductToCart({ userId: userData.id, product }));
     }
   };
@@ -38,17 +45,32 @@ const CartQuantityBtn: React.FC<ProductProps> = ({ product }) => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleQuantityChange = (value: number) => {
     if (userData) {
-      const value = Math.max(0, Number(e.target.value)); // Ensure quantity doesn't go below 0
+      const adjustedValue = Math.floor(
+        Math.min(currentQuantity, Math.max(0, Number(value)))
+      ); // Ensure quantity doesn't go below 0 and doesn't go above the product current quantity
+      setQuantity(adjustedValue);
       dispatch(
         changeProductQuantityInCart({
           userId: userData.id,
           productId: product.id,
-          quantity: value,
+          quantity: adjustedValue,
         })
       );
     }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      const value = Number(e.currentTarget.value);
+      handleQuantityChange(value);
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const value = Number(e.currentTarget.value);
+    handleQuantityChange(value);
   };
 
   return (
@@ -66,7 +88,11 @@ const CartQuantityBtn: React.FC<ProductProps> = ({ product }) => {
           type="number"
           value={quantity}
           min={0}
-          onChange={handleChange}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setQuantity(Math.floor(Number(e.target.value)));
+          }}
+          onKeyDown={handleKeyDown}
+          onBlur={handleBlur}
           disabled={isLoading}
         />
         <button
