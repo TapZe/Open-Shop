@@ -10,9 +10,12 @@ import {
 import { RootState } from "../../../redux/store";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { ProductProps } from "../../../types/productTypes";
+import { AddWishlistBtnProps } from "../../../types/types";
 
-const AddWishlistBtn: React.FC<ProductProps> = ({ product }) => {
+const AddWishlistBtn: React.FC<AddWishlistBtnProps> = ({
+  product,
+  toolPlace = "left",
+}) => {
   const { wishList } = useSelector(
     (state: RootState) => state.persist.wishList
   );
@@ -43,7 +46,7 @@ const AddWishlistBtn: React.FC<ProductProps> = ({ product }) => {
   return (
     <>
       <div
-        className="tooltip tooltip-left"
+        className={`tooltip tooltip-${toolPlace}`}
         data-tip={isSaved ? "Remove from wishlist" : "Add to wishlist"}
       >
         <button
