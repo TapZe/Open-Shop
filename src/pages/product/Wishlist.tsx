@@ -20,9 +20,9 @@ const Wishlist = () => {
   return (
     <>
       <h1 className="text-3xl font-bold text-center">
-        Saved <span className="text-cyan-600">Products</span>
+        My <span className="text-cyan-600">Wishlist</span>
       </h1>
-      {!(wishData.length > 0) && (
+      {!(wishData?.length > 0) && (
         <div role="alert" className="alert alert-info mb-5 my-10">
           <FontAwesomeIcon icon={faCircleInfo} />
           <span>No saved product yet!</span>
