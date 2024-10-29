@@ -1,4 +1,4 @@
-import { Product } from "./productTypes";
+import { Product, ProductProps } from "./productTypes";
 
 export type WishListState = {
   wishList: {
@@ -15,3 +15,7 @@ export type RemoveWishListPayload = {
   userId: number;
   productId: number;
 };
+
+export interface AddWishlistBtnProps extends ProductProps {
+  toolPlace?: "left"|"right"|"top"|"bottom";
+}
