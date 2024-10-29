@@ -20,7 +20,7 @@ const ProductCatSection: React.FC<CategorySectionProps> = ({ category }) => {
     return (
       <>
         <h2 className="text-xl">{formattedCategory}</h2>
-        <div className="grid md:grid-flow-col gap-x-4 md:overflow-x-scroll no-scrollbar p-5 mb-5">
+        <div className="grid grid-flow-col gap-x-4 overflow-x-scroll no-scrollbar p-5 mb-5">
           {Array.from({ length: skeletonCount }).map((_, index) => (
             <ProductCardSkeleton key={index} />
           ))}
@@ -32,7 +32,7 @@ const ProductCatSection: React.FC<CategorySectionProps> = ({ category }) => {
   return (
     <>
       <h2 className="text-xl">{formattedCategory}</h2>
-      <div className="grid md:grid-flow-col gap-x-4 md:overflow-x-scroll no-scrollbar p-5 mb-5">
+      <div className="grid grid-flow-col gap-x-4 overflow-x-scroll no-scrollbar p-5 mb-5">
         {data?.map((product) => {
           const { id } = product;
           return <ProductCard key={id} product={product} />;
