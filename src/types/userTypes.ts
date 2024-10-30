@@ -50,3 +50,7 @@ export type User = {
 };
 
 export type UsersResponse = User[];
+
+export type UserProfileProps = {
+  user: User;
+}

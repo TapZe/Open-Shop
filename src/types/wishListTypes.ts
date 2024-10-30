@@ -17,5 +17,5 @@ export type RemoveWishListPayload = {
 };
 
 export interface AddWishlistBtnProps extends ProductProps {
-  toolPlace?: "left"|"right"|"top"|"bottom";
+  toolPlace?: "tooltip-left"|"tooltip-right"|"tooltip-top"|"tooltip-bottom";
 }
