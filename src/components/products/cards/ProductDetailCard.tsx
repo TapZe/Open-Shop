@@ -37,7 +37,7 @@ const ProductDetailCard: React.FC<ProductProps> = ({ product }) => {
               <AddCartBtn product={product} />
             </div>
             <div className="mt-2">
-              <AddWishlistBtn product={product} toolPlace="right" />
+              <AddWishlistBtn product={product} toolPlace="tooltip-right" />
             </div>
           </div>
         </div>

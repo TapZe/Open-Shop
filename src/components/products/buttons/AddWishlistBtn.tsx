@@ -14,7 +14,7 @@ import { AddWishlistBtnProps } from "../../../types/types";
 
 const AddWishlistBtn: React.FC<AddWishlistBtnProps> = ({
   product,
-  toolPlace = "left",
+  toolPlace = "tooltip-left",
 }) => {
   const { wishList } = useSelector(
     (state: RootState) => state.persist.wishList
@@ -46,7 +46,7 @@ const AddWishlistBtn: React.FC<AddWishlistBtnProps> = ({
   return (
     <>
       <div
-        className={`tooltip tooltip-${toolPlace}`}
+        className={`tooltip ${toolPlace}`}
         data-tip={isSaved ? "Remove from wishlist" : "Add to wishlist"}
       >
         <button
