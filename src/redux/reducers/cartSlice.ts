@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AddToCartPayload, CartState, DecreaseFromCartPayload, ProductQuantityInCartPayload, RemoveProductFromCartPayload } from "../../types/types";
+import { AddToCartPayload, CartState, DecreaseFromCartPayload, ProductCartIdPayload, ProductQuantityInCartPayload } from "../../types/types";
 
 const initialState: CartState = {
   cart: {},
@@ -29,7 +29,7 @@ const cartSlice = createSlice({
             state.cart[userId][existingProductIndex].quantity += 1;
         } else {
             // Product does not exist, add it to the cart with quantity 1
-            state.cart[userId].push({ ...product, quantity: 1 });
+            state.cart[userId].push({ ...product, quantity: 1, checkout:true });
         }
     },
     decreaseProductFromCart: (
@@ -84,9 +84,9 @@ const cartSlice = createSlice({
     },
     removeProductFromCart: (
       state: CartState,
-      action: PayloadAction<RemoveProductFromCartPayload>
+      action: PayloadAction<ProductCartIdPayload>
     ) => {
-       const { userId, productId } = action.payload;
+      const { userId, productId } = action.payload;
 
       if (state.cart[userId]) {
         state.cart[userId] = state.cart[userId].filter(
@@ -94,8 +94,26 @@ const cartSlice = createSlice({
         );
       }
     },
+    changeCheckoutCheck: (
+      state: CartState,
+      action: PayloadAction<ProductCartIdPayload>
+    ) => {
+      const { userId, productId } = action.payload;
+
+      if (state.cart[userId]) {
+        // Find the product index
+        const existingProductIndex = state.cart[userId].findIndex(
+          (item) => item.id === productId
+        );
+
+        if (existingProductIndex !== -1) { // Make sure the product exist
+          const existingProduct = state.cart[userId][existingProductIndex];
+          existingProduct.checkout = !existingProduct.checkout;
+        }
+      }
+    },
   },
 });
 
-export const { addProductToCart, changeProductQuantityInCart, decreaseProductFromCart, removeProductFromCart } = cartSlice.actions;
+export const { addProductToCart, changeProductQuantityInCart, decreaseProductFromCart, removeProductFromCart, changeCheckoutCheck } = cartSlice.actions;
 export default cartSlice.reducer;

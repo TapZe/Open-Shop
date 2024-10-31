@@ -22,13 +22,6 @@ const Navbar: React.FC = () => {
           </Link>
         </div>
         <div className="navbar-end md:pr-4 gap-1">
-          {/* <div className="form-control">
-            <input
-              type="text"
-              placeholder="Search"
-              className="input input-bordered w-24 md:w-auto"
-            />
-          </div> */}
           <div className="tooltip tooltip-bottom" data-tip="Wishlist">
             <NavLink
               to={`/product/wishlist`}

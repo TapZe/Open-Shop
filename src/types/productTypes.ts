@@ -27,7 +27,7 @@ export type ProductProps = {
 }
 
 export type ManyProductsProps = {
-  product: Product[];
+  products: Product[];
 }
 
 export interface ProductsGridProps extends ManyProductsProps {
