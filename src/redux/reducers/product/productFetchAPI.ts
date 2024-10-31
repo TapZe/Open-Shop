@@ -11,7 +11,7 @@ export const productApi = createApi({
   endpoints: (builder) => ({
     getAllProduct: builder.query<AllProductsResponse, void>({
       query: () => `${PRODUCT_QUERY}`,
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
           const ids: number[] = data.map((product) => product.id);
