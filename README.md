@@ -57,7 +57,7 @@ Follow these steps to set up this project locally:
    npm install
    ```
 
-4. **Install dependencies:**
+4. **Run Development Server:**
 
    ```
    npm run dev
